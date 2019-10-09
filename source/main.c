@@ -21,12 +21,14 @@ int main(void) {
     unsigned fuelLevel  = 0x00;
     unsigned char tmp = 0x00;
     unsigned char lowFuel = 0;
+    unsigned char fstBelt = 0x00;
 
     while (1) {
 
         fuelLevel = 0x00;
         tmp = 0xFF & PINA;
 	lowFuel = 0x00;
+	fstBelt = 0x00;
 
 	if ((tmp == 0x01) || (tmp == 0x02)) {
 		fuelLevel = 0x20;
@@ -48,8 +50,11 @@ int main(void) {
 	else {
 		fuelLevel = 0x3F;
 	}
+	if ((tmp & 0x70) == 0x30) {
+		fstBelt = 0x80;
+	}
 	
-	PORTC = fuelLevel | lowFuel;
+	PORTC = (fuelLevel | lowFuel) | fstBelt;
 	tmp = 0x00;
     }
     return 1;
