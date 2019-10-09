@@ -15,47 +15,23 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
     DDRA = 0x00; PORTA = 0xFF;
+    DDRB = 0xFF; PORTB = 0x00;
     DDRC = 0xFF; PORTC = 0x00;
     	
     /* Insert your solution below */
-    unsigned fuelLevel  = 0x00;
-    unsigned char tmp = 0x00;
-    unsigned char lowFuel = 0;
-    unsigned char fstBelt = 0x00;
+    unsigned tmpA = 0x00;
+    unsigned tmpB = 0x00;
+    unsigned tmpC = 0x00;
 
     while (1) {
 
-        fuelLevel = 0x00;
-        tmp = 0xFF & PINA;
-	lowFuel = 0x00;
-	fstBelt = 0x00;
+	tmpA = PINA & 0xFF;
 
-	if ((tmp == 0x01) || (tmp == 0x02)) {
-		fuelLevel = 0x20;
-		lowFuel = 0x40;
-	}
-	else if ((tmp == 0x03) || (tmp == 0x04)) {
-		fuelLevel = 0x30;
-		lowFuel = 0x40;
-	}
-	else if ((tmp == 0x05) || (tmp ==0x06)) {
-		fuelLevel = 0x38;
-	}
-	else if ((tmp == 0x07) || (tmp == 0x08) || (tmp == 0x09)) {
-		fuelLevel = 0x3C;
-	}
-	else if ((tmp == 0x0A) || (tmp == 0x0B) || (tmp == 0x0C)) {
-		fuelLevel = 0x3E;
-	}
-	else {
-		fuelLevel = 0x3F;
-	}
-	if ((tmp & 0x70) == 0x30) {
-		fstBelt = 0x80;
-	}
-	
-	PORTC = (fuelLevel | lowFuel) | fstBelt;
-	tmp = 0x00;
+	tmpB = tmpA >> 4;
+	tmpC = tmpA << 4;
+
+	PORTB = tmpB;
+	PORTC = tmpC;
     }
     return 1;
 }
