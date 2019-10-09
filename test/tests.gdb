@@ -40,88 +40,40 @@ echo Running all tests..."\n\n
 
 # Add tests below
 
-test "PINA[7:0]: 0x00, PINB[7:0]: 0x00, PORTC[7:0]: 0x00"
-setPINA 0x00
-setPINB 0x00
-continue 2
-expectPORTC 0x00
-checkResult
-
-test "PINA[7:0]: 0x10, PINB[7:0]: 0x00, PORTC[7:0]: 0x01"
-setPINA 0x10
-setPINB 0x00
-continue 2
-expectPORTC 0x01
-checkResult
-
-test "PINA[7:0]: 0x01, PINB[7:0]: 0x10, PORTC[7:0]: 0x02"
+test "PINA[3:0]: 0x01, PORTC[6:0]: 0x60"
 setPINA 0x01
-setPINB 0x10
 continue 2
-expectPORTC 0x02
+expectPORTC 0x60
 checkResult
 
-test "PINA[7:0]: 0x03, PINB[7:0]: 0x40, PORTC[7:0]: 0x03"
+test "PINA[3:0]: 0x03, PORTC[6:0]: 0x70"
 setPINA 0x03
-setPINB 0x40
 continue 2
-expectPORTC 0x03
+expectPORTC 0x70
 checkResult
 
-test "PINA[7:0]: 0x07, PINB[7:0]: 0x01, PORTC[7:0]: 0x04"
-setPINA 0x07
-setPINB 0x01
+test "PINA[3:0]: 0x05, PORTC[6:0]: 0x38"
+setPINA 0x05
 continue 2
-expectPORTC 0x04
+expectPORTC 0x38
 checkResult
 
-test "PINA[7:0]: 0x80, PINB[7:0]: 0xF0, PORTC[7:0]: 0x05"
-setPINA 0x80
-setPINB 0xF0
+test "PINA[3:0]: 0x08, PORTC[6:0]: 0x3C"
+setPINA 0x08
 continue 2
-expectPORTC 0x05
+expectPORTC 0x3C
 checkResult
 
-test "PINA[7:0]: 0x70, PINB[7:0]: 0x07, PORTC[7:0]: 0x06"
-setPINA 0x07
-setPINB 0x07
+test "PINA[3:0]: 0x0B, PORTC[6:0]: 0x3E"
+setPINA 0x0B
 continue 2
-expectPORTC 0x06
+expectPORTC 0x3E
 checkResult
 
-test "PINA[7:0]: 0xC1, PINB[7:0]: 0x3A, PORTC[7:0]: 0x07"
-setPINA 0xC1
-setPINB 0x3A
+test "PINA[3:0]: 0x0F, PORTC[6:0]: 0x3F"
+setPINA 0x0F
 continue 2
-expectPORTC 0x07
-checkResult
-
-test "PINA[7:0]: 0x69, PINB[7:0]: 0xC3, PORTC[7:0]: 0x08"
-setPINA 0x69
-setPINB 0xC3
-continue 2
-expectPORTC 0x08
-checkResult
-
-test "PINA[7:0]: 0x1F, PINB[7:0]: 0xF0, PORTC[7:0]: 0x09"
-setPINA 0x1F
-setPINB 0xF0
-continue 2
-expectPORTC 0x09
-checkResult
-
-test "PINA[7:0]: 0xF1, PINB[7:0]: 0x1F, PORTC[7:0]: 0x0A"
-setPINA 0x1F
-setPINB 0xF1
-continue 2
-expectPORTC 0x0A
-checkResult
-
-test "PINA[7:0]: 0xFF, PINB[7:0]: 0xFF, PORTC[7:0]: 0x10"
-setPINA 0xFF
-setPINB 0xFF
-continue 2
-expectPORTC 0x10
+expectPORTC 0x3F
 checkResult
 
 # Report on how many tests passed/tests ran
